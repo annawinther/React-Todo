@@ -18,7 +18,7 @@ function Todos ({todoList}){
     <div>
       {todoList.map(todo => {
         return (
-          <div>
+          <div key={todo.id}>
             {todo.task}
           </div>  
         )
@@ -35,23 +35,55 @@ class App extends React.Component {
     super(props)
     this.state = {
       todoList: todoList,
-      newTodo: '',
+      newTodos: '',
     }
   }
+  changeHandler = (event) => {
+      this.setState({
+        newTodos: event.target.value,
+      });
+  }
+
   addTodos =() => {
-    this.setState({todoList: this.state.todoList.concat({task: 'floor'})})
+    const newToDo ={
+      id: Date.now(),
+      task: this.state.newTodos,
+      completed: false,
+    };
+
+
+    this.setState({
+      todoList: this.state.todoList.concat(newToDo),
+      newTodos: '',
+     })
   }
 
   render(){
     return (
       <div>
+        <h3>Todo List</h3>
         <Todos todoList={this.state.todoList} />
-        <button onClick={this.addTodos}>
-          Add Todo
-        </button>
-      </div>
+        <TodoAdder 
+        newTodos={this.state.newTodos}
+        changeHandler={this.changeHandler}
+        addTodos={this.addTodos}
+        />
+       </div>
     )
   }
+}
+
+function TodoAdder({ newTodos, changeHandler, addTodos}) {
+  return (
+    <div>
+      <input
+        value={newTodos}
+        onChange={changeHandler}
+        type="text"
+      />
+      <button onClick={addTodos}>New Task!</button>
+    </div>
+  )
 }
 
 export default App;
