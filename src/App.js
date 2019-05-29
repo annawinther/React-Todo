@@ -38,10 +38,17 @@ class App extends React.Component {
       newTodo: '',
     }
   }
+  addTodos =() => {
+    this.setState({todoList: this.state.todoList.concat({task: 'floor'})})
+  }
+
   render(){
     return (
       <div>
-        <Todos key={todoList} todoList={this.state.todoList} />
+        <Todos todoList={this.state.todoList} />
+        <button onClick={this.addTodos}>
+          Add Todo
+        </button>
       </div>
     )
   }
