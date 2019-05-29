@@ -13,14 +13,14 @@ const todoList = [
   }
 ];
 
-function Todos ({ todoList }) {
-  return (
+function Todos ({todoList}){
+  return(
     <div>
       {todoList.map(todo => {
         return (
           <div>
             {todo.task}
-          </div>
+          </div>  
         )
       })}
     </div>
@@ -31,16 +31,17 @@ class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
-  constructor(props){
+  constructor (props) {
     super(props)
-    this.state = {todoList}
-    
+    this.state = {
+      todoList: todoList,
+      newTodo: '',
+    }
   }
-  
   render(){
     return (
       <div>
-        <Todos todoList={this.state.todoList} />
+        <Todos key={todoList} todoList={this.state.todoList} />
       </div>
     )
   }
