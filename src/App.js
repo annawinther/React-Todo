@@ -1,19 +1,19 @@
 import React from 'react';
+import './App.css';
 import Todos from './Todo';
 import TodoAdder from './TodoAdder'
-
 
 
 const todoList = [
   {
     task: 'Organize Garage',
     id: 1528817077286,
-    completed: false
+    complete: false
   },
   {
     task: 'Bake Cookies',
     id: 1528817084358,
-    completed: false
+    complete: false
   }
 ];
 
@@ -47,7 +47,7 @@ class App extends React.Component {
     const newToDo ={
       id: Date.now(),
       task: this.state.newTodos,
-      completed: false,
+      complete: false,
     };
 
     this.setState({
@@ -70,13 +70,13 @@ class App extends React.Component {
 
  clearCompleted = () => {
   this.setState({
-    todoList: todoList.filter(todo => todo.completed),
+    todoList: this.state.todoList.filter(todo => todo.complete !== true),
   });
  }
 
   render(){
     return (
-      <div>
+      <div className="app-container">
         <h3>Todo List</h3>
         <Todos 
         todoList={this.state.todoList} 
@@ -89,7 +89,7 @@ class App extends React.Component {
         />
         <button 
         className='alert'
-        onClick={clearCompleted}>
+        onClick={this.clearCompleted}>
         Clear Completed
         </button>
        </div>
@@ -129,7 +129,6 @@ export default App;
   //     }),
   //   });
   // };
-
 
 // function Todos ({ todoList }){
 //   return (

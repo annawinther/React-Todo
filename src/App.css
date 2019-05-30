@@ -1,0 +1,35 @@
+.app-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #bfbfbf;
+    border: 1px solid grey;
+    margin: 30px;
+}
+.app-container h3 {
+    text-align: center;
+}
+
+.todoAdder-container{
+    /* border: 1px solid red; */
+    
+    text-align: center;
+}
+.todo-input{
+    padding:5px;
+    width: 50%;
+    background-color: white;
+    margin: 20px;
+    border: 1px solid black;
+}
+.alert{
+    width: 50%;
+    background-color: ;
+}
+.todo-container{
+    padding:20px;
+    text-align: center;
+}
+
+.todoItem{
+    padding:6px;
+}
