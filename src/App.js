@@ -1,4 +1,8 @@
 import React from 'react';
+import Todos from './Todo';
+import TodoAdder from './TodoAdder'
+
+
 
 const todoList = [
   {
@@ -18,37 +22,8 @@ const todoList = [
 //     todoList: this.state.todoList.filter(task => task.id !== id)
 //   });
 // }
-function TodoAdder({ newTodos, changeHandler, addTodos }) {
-  return (
-    <div>
-      <input
-        value={newTodos}
-        onChange={changeHandler}
-        type="text"
-        placeholder="...todo"
-      />
-      <button onClick={addTodos}>Add Task</button>
-      <button>Clear Completed</button>
-    </div>
-  )
-}
 
-function Todos ({todoList, }){
-  return(
-    <div>
-      {todoList.map(todo => {
-        return (
-          <div
-          key={todo.id}>
-            {todo.task}
-            <div onClick={() => this.props.toggleTask(this.props.data)}> 
-            </div>
-          </div>  
-        )
-      })}
-    </div>
-  )
-}
+
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -61,7 +36,7 @@ class App extends React.Component {
       newTodos: '',
     }
   }
-  
+
   changeHandler = (event) => {
       this.setState({
         newTodos: event.target.value,
@@ -81,6 +56,19 @@ class App extends React.Component {
      })
   }
  
+  markTodoComplete = id => {
+    this.setState(currentState => ({
+      todoList: currentState.todoList.map(todo => {
+        if (todo.id === id) {
+          todo.complete = false;
+        }
+        return todo;
+      }),
+    }));
+  }
+
+
+
   render(){
     return (
       <div>
