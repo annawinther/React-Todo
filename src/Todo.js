@@ -3,23 +3,25 @@ import React from 'react';
 
 
 
-export default function Todos ({todoList, }){
+export default function Todos ({ todoList, markTodoComplete, id}){
 
-    // const onMarkCoplete = event => {
-    //     markTodoComplete(todo.id)
-    //   }
+    const onMarkCoplete = event => {
+        markTodoComplete(todoList.id)
+      }
 
-
-
+    const markStyle = {
+        color: todoList.completed ? 'green' : 'black',
+     };
 
     return(
       <div>
         {todoList.map(todo => {
           return (
             <div
-            key={todo.id}>
+              style={markStyle} 
+              key={todo.id}>
               {todo.task}
-              {/* <button onClick={onMarkCoplete} >Mark as Complete</button> */}
+              <button onClick={onMarkCoplete}>Mark as Complete</button>
             </div>  
           )
         })}

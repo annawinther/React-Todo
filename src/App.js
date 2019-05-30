@@ -57,17 +57,22 @@ class App extends React.Component {
   }
  
   markTodoComplete = id => {
-    this.setState(currentState => ({
-      todoList: currentState.todoList.map(todo => {
+    
+    this.setState(state => ({
+      todoList: state.todoList.map(todo => {
         if (todo.id === id) {
-          todo.complete = false;
+          todo.complete = true;
         }
         return todo;
       }),
     }));
   }
 
-
+ clearCompleted = () => {
+  this.setState({
+    todoList: todoList.filter(todo => todo.completed),
+  });
+ }
 
   render(){
     return (
@@ -75,12 +80,18 @@ class App extends React.Component {
         <h3>Todo List</h3>
         <Todos 
         todoList={this.state.todoList} 
+        markTodoComplete={this.markTodoComplete}
         />
         <TodoAdder 
         newTodos={this.state.newTodos}
         changeHandler={this.changeHandler}
         addTodos={this.addTodos}
         />
+        <button 
+        className='alert'
+        onClick={clearCompleted}>
+        Clear Completed
+        </button>
        </div>
     )
   }

@@ -11,7 +11,7 @@ export default function TodoAdder({ newTodos, changeHandler, addTodos }) {
           placeholder="...todo"
         />
         <button onClick={addTodos}>Add Task</button>
-        <button>Clear Completed</button>
+        
       </div>
     )
   }
