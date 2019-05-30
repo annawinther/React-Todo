@@ -18,15 +18,31 @@ const todoList = [
 //     todoList: this.state.todoList.filter(task => task.id !== id)
 //   });
 // }
+function TodoAdder({ newTodos, changeHandler, addTodos }) {
+  return (
+    <div>
+      <input
+        value={newTodos}
+        onChange={changeHandler}
+        type="text"
+        placeholder="...todo"
+      />
+      <button onClick={addTodos}>Add Task</button>
+      <button>Clear Completed</button>
+    </div>
+  )
+}
 
-function Todos ({todoList}){
+function Todos ({todoList, }){
   return(
     <div>
       {todoList.map(todo => {
         return (
-          <div key={todo.id}>
+          <div
+          key={todo.id}>
             {todo.task}
-          {/* <button onClick={() => this.removeTask(todo.id)}>delete</button> */}
+            <div onClick={() => this.props.toggleTask(this.props.data)}> 
+            </div>
           </div>  
         )
       })}
@@ -50,7 +66,7 @@ class App extends React.Component {
       this.setState({
         newTodos: event.target.value,
       });
-  }
+  };
 
   addTodos = () => {
     const newToDo ={
@@ -64,66 +80,56 @@ class App extends React.Component {
       newTodos: '',
      })
   }
-
-  crossOut = data => {
-    const { todoList } = this.state;
-    const newData = data;
-    newData.completed = !newData.completed;
-
-    this.setState({
-      todokList: todoList.map(task => {
-        if (task.id === newData.id) {
-          return newData;
-        }
-        return task;
-      }),
-    });
-  };
  
-      
-
   render(){
     return (
       <div>
         <h3>Todo List</h3>
         <Todos 
-        todoList={this.state.todoList} />
+        todoList={this.state.todoList} 
+        />
         <TodoAdder 
         newTodos={this.state.newTodos}
         changeHandler={this.changeHandler}
         addTodos={this.addTodos}
-        crossOut={this.crossOut}
         />
        </div>
     )
   }
 }
 
-function TodoAdder({ newTodos, changeHandler, addTodos, crossOut }) {
-  return (
-    <div>
-      <input
-        value={newTodos}
-        onChange={changeHandler}
-        type="text"
-        placeholder="...todo"
-      />
-      <button onClick={addTodos}>Add Task</button>
-      <button onClick={crossOut}>Clear completed</button>
-    </div>
-  )
-}
-
-// function ToggleTask ({ }){
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }
-
 export default App;
 
+
+  // toggleTask = (data) => {
+  //   const { todoList } = this.state;
+  //   const newData = data;
+  //   newData.completed = !newData.completed;
+
+  //   this.setState({
+  //     todoList: todoList.map(todo => {
+  //       if (todo.id === newData.completed) {
+  //         return newData;
+  //       }
+  //       return todo;
+  //     }),
+  //   });
+  // };
+
+  // crossOut = data => {
+  //   const { todoList } = this.state;
+  //   const newData = data;
+  //   newData.completed = !newData.completed;
+
+  //   this.setState({
+  //     todokList: todoList.map(task => {
+  //       if (task.id === newData.id) {
+  //         return newData;
+  //       }
+  //       return task;
+  //     }),
+  //   });
+  // };
 
 
 // function Todos ({ todoList }){
