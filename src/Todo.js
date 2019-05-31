@@ -9,6 +9,7 @@ export default function Todos({ todoList, markTodoComplete }) {
                     markTodoComplete(todo.id)
                 }
                 const markStyle = {
+                    cursor: 'pointer',
                     textDecoration: todo.complete ? 'line-through' : 'none',
                     color: todo.complete ? '#BC8F8F' : 'black',
                 };
