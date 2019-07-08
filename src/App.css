@@ -1,7 +1,7 @@
 .app-container{
     display: flex;
     flex-direction: column;
-    background-color: #bfbfbf;
+    background: linear-gradient(to right, #dae2f8, #d6a4a4);
     border: 1px solid grey;
     margin: 30px;
 }
@@ -15,19 +15,32 @@
     text-align: center;
 }
 .todo-input{
-    padding:5px;
-    width: 50%;
+    align-self: center;
+    /* padding:10px; */
+    width: 43%;
     background-color: white;
-    margin: 20px;
+    height: 50px;
+    /* margin: 20px; */
     border: 1px solid black;
+    font-size: 1rem;
+}
+.btn{
+   height: 50px;
+   margin-left: 10px;
 }
 .alert{
     width: 50%;
+    align-self: center;
     padding: 10px;
-    margin: 10px 10px 10px 130px;
-    background-color: black;
+    margin: 10px 0px 10px 0px;
+    background: linear-gradient(to right, #5c258d , #f3a183);
     color: white;
-    text-align: center;
+    font-size: 1.5rem;
+    text-align: center;  
+}
+.alert:hover{
+    cursor: pointer;
+    opacity: 0.5;
 }
 .todo-container{
     padding:20px;
